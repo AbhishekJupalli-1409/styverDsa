@@ -2,6 +2,32 @@
 using namespace std;
 
 
+
+
+
+/*==========================void Function=========*/
+// a function that does not return any value
+void print() {
+    cout << "--void func--" << endl;
+    cout << "hello" << endl;
+}
+
+
+
+
+int sum(int a, int b) {
+    cout << "--int func--" << endl;
+    return a + b;
+}
+
+
+
+
+
+
+
+
+
 /*
 
 C++ STL divided into 4 parts
@@ -28,7 +54,7 @@ void explainpair() {
     pair <int, pair<int, int >> k = { 1 ,{2 , 4} }; //nested property
     cout << k.first << " " << k.second.first << " " << k.second.second << endl;
     pair <int, int> arr[] = { {1,2},{4,5},{6,7} };
-    cout << arr[1].first << arr[2].first << endl;
+    cout << arr[1].first << arr[2].second << endl;
 
 }
 
@@ -97,6 +123,7 @@ void explainlist() {
     for (auto it : ls) {
         cout << it << " ";
     }
+    cout << endl;
     //rest functions are same as vector
     //begin,end,insert,rbegin,rend,clear,size,swap;
 
@@ -109,20 +136,57 @@ void explainlist() {
 
 
 
-/*==========================void Function=========*/
-// a function that does not return any value
-void print() {
-    cout << "--void func--" << endl;
-    cout << "hello" << endl;
+/*=============================Dequeue===================*/
+void explaindeque() {
+    cout << "--explainDeque--" << endl;
+    deque<int> dq;
+    dq.push_back(12);//{12}
+    dq.push_front(10);//{10,12}
+    dq.emplace_back(20);//{10,12,20}
+    dq.emplace_front(15);//{15,10,12,20}
+    dq.insert(dq.begin() + 2, 30);//{15,10,30,12,10,20}
+
+    for (auto it : dq) {
+        cout << it << " ";
+    }
+
+    dq.erase(dq.begin() + 2);//{15,10,12,20}
+    dq.pop_back();//{15,10,12}
+    dq.pop_front();//{10,12}
+    cout << dq.back() << endl;//12
+    for (auto it : dq) {
+        cout << it << " ";
+    }
+    cout << endl;
+
 }
 
 
 
 
-int sum(int a, int b) {
-    cout << "--int func--" << endl;
-    return a + b;
+
+
+
+
+
+/*============================Stack=====================*/
+//Uses FIFO, main operations are top,pop,push
+//all operations take O(1) -- TC
+
+void explainstack() {
+    cout << "--explainStack--" << endl;
+    stack<int> s;
+    s.push(10);
+    s.push(13);
+    s.push(15);
+    s.emplace(9);//{10,13,15,9}
+    cout << s.top() << endl;//9
+    s.pop();//{10,13,15}
+    cout << s.top() << endl;//15
+
 }
+
+
 
 
 int main() {
@@ -137,6 +201,9 @@ int main() {
 
     explainlist();
 
+    explaindeque();
+
+    explainstack();
 
     return 0;
 }
