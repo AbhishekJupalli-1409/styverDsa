@@ -14,7 +14,7 @@ void print() {
 
 
 
-
+/*===========================Int Function=============*/
 int sum(int a, int b) {
     cout << "--int func--" << endl;
     return a + b;
@@ -176,15 +176,91 @@ void explaindeque() {
 void explainstack() {
     cout << "--explainStack--" << endl;
     stack<int> s;
-    s.push(10);
-    s.push(13);
-    s.push(15);
-    s.emplace(9);//{10,13,15,9}
+    s.push(10);//{10}
+    s.push(13);//{13,10}
+    s.push(15);//{15,13,10}
+    s.emplace(9);//{9,15,13,10}
     cout << s.top() << endl;//9
-    s.pop();//{10,13,15}
+    s.pop();//{15,13,10}
     cout << s.top() << endl;//15
 
+
+    // Correct way to print the elements in the stack:
+    while (!s.empty()) {
+        cout << s.top() << " ";
+        s.pop();
+    }
+    cout << endl;
+
 }
+
+
+
+
+
+
+
+
+
+
+
+/*=============================Queue=====================*/
+//Uses FIFO, main operations are front,back,pop,push
+//all operations take O(1) -- TC
+//front returns the first element, back returns the last element
+void explainqueue() {
+    cout << "--explainQueue--" << endl;
+    queue<int> q;
+    q.push(1);//{1}
+    q.push(2);//{1,2}
+    q.emplace(4);//{1,2,4}
+    q.back() += 5;//{1,2,9};
+    cout << q.front() << endl;//1
+    cout << q.back() << endl;//9
+    q.pop();//{2,9}
+    cout << q.front() << endl;
+
+    /*we cant use iterator in case of queue it doesnt support std::queue
+       The std::queue container is designed for FIFO (First In, First Out) access,
+       and it only provides access to the front and back elements.*/
+    while (!q.empty()) {
+        cout << q.front() << " ";
+        q.pop();
+    }
+    cout << endl;
+}
+
+
+
+
+
+
+/*==============================PriorityQueue================*/
+//Uses max heap, main operations are top,pop,push
+//all operations take O(log n) -- TC, top --> O(1);
+//largest element stays at the top
+void explainpriorityqueue() {
+    cout << "--priorityQueue--" << endl;
+    priority_queue<int> pq;  //similar to stack
+    pq.push(5);//{5}
+    pq.push(2);//{5,2}
+    pq.push(8);//{8,5,2}
+    cout << pq.top() << endl;//8
+    pq.push(3);//{8,5,3,2}
+    pq.pop();//{5,3,2} //we cant output pop or push
+    cout << pq.top() << endl;//5
+    while (!pq.empty()) {
+        cout << pq.top() << " ";
+        pq.pop();
+    }
+    cout << endl;
+
+
+}
+
+
+
+
 
 
 
@@ -204,6 +280,10 @@ int main() {
     explaindeque();
 
     explainstack();
+
+    explainqueue();
+
+    explainpriorityqueue();
 
     return 0;
 }
