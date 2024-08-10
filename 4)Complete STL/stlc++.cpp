@@ -264,6 +264,50 @@ void explainpriorityqueue() {
 
 
 
+/*==============================Set=====================*/
+
+   //set is an unordered collection of unique elements
+   //And they are --SORTED n --UNIQUE
+    //set is implemented as a binary search tree
+    //set is implemented as a red-black tree
+    //set is implemented as a hash table
+    //set is implemented as a combination of hash table and binary search tree
+    //set is implemented as a combination of hash table and red-black tree
+
+void explainset() {
+    cout << "--set--" << endl;
+    set<int> st;
+    st.insert(1);//{1}
+    st.insert(2);//{1,2}
+    st.insert(2);//{1,2}
+    st.insert(4);//{1,2,4}
+    st.insert(5);//{1,2,4,5}
+    for (auto it : st) {
+        cout << it << " ";
+    }
+    cout << endl;
+    auto it = st.find(4);//gives a pointer which points to the 4
+    int cnt = st.count(1);// if number exsists --> T , else --> F
+    cout << cnt << endl;
+    auto it1 = st.lower_bound(4);
+    cout << *it1 << endl;//4
+    auto it2 = st.upper_bound(4);
+    cout << *it2 << endl;//5
+
+    //all remaining begin(),end(),rend(),rbegin(),size(),swap() are same
+
+    //all operations take O(logn) --> TC
+
+
+
+
+
+
+
+}
+
+
+
 
 int main() {
 
@@ -284,6 +328,8 @@ int main() {
     explainqueue();
 
     explainpriorityqueue();
+
+    explainset();
 
     return 0;
 }
